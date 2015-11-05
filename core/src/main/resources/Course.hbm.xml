@@ -3,13 +3,13 @@
       "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
           "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
           
-<hibernate-mapping package="fr.utbm.core.src.main.resources">
-	<class name="User" table="USERS">
-		<id name="idUser" column="user_id">
+<hibernate-mapping package="fr.utbm.projectlo54.core.entity">
+	<class name="Course" table="COURSE">
+		<id name="id" column="ID">
 		    <generator class="identity"/>
 		</id>
-			
-		<property name="code" column="CODE" not-null="true" />
+                
+                <property name="code" column="CODE" not-null="true" />
                 <property name="title" column="TITLE" not-null="true" />
 
 	</class>			

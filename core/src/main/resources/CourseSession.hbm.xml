@@ -3,13 +3,12 @@
       "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
           "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
           
-<hibernate-mapping package="fr.utbm.core.src.main.resources">
-	<class name="User" table="USERS">
-		<id name="idUser" column="user_id">
+<hibernate-mapping package="fr.utbm.projectlo54.core.entity">
+	<class name="CourseSession" table="COURSE_SESSION">
+		<id name="id" column="ID">
 		    <generator class="identity"/>
 		</id>
 			
-		<property name="id" column="ID" not-null="true" />
                 <property name="startDate" column="START_DATE" not-null="true" />
                 <property name="endDate" column="END_DATE" not-null="true" />
                 <many-to-one name="courseCode" column="COURSE_CODE" not-null="true"/>
