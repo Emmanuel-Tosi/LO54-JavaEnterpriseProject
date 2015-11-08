@@ -25,15 +25,12 @@ public class CourseService {
         List <Course> courseList = null;
         System.out.println("Liste des formations disponibles dont le titre contient: " + keyword);
         System.out.println("");
-        System.out.println("");
         
         HibernateCourseRepository repository = new HibernateCourseRepository();
         courseList = repository.getByKeyword(keyword);
         
         for(int i = 0; i < courseList.size(); i++) {
             System.out.println(i + " - cours nommé " + courseList.get(i).getTitle());
-            System.out.println("");
-            System.out.println("");
             System.out.println("");
         }
         
