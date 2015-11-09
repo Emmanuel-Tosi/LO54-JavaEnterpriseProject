@@ -69,6 +69,10 @@ public class CourseSession {
     public void setLocationId(Location locationId) {
         this.locationId = locationId;
     }
+
+    public String getTitle() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
