@@ -5,11 +5,10 @@
           
 <hibernate-mapping package="fr.utbm.projectlo54.core.entity">
 	<class name="Course" table="COURSE">
-		<id name="id" column="ID">
-		    <generator class="identity"/>
+		<id name="code" column="CODE">
+		    <generator class="assigned"/>
 		</id>
                 
-                <property name="code" column="CODE" not-null="true" />
                 <property name="title" column="TITLE" not-null="true" />
 
 	</class>			

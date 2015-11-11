@@ -14,7 +14,12 @@ import java.util.List;
  * @author java
  */
 public class CourseSessionService {
-    List<CourseSession> getCourseSession(int min, int max)
+    public CourseSessionService()
+    {
+        
+    }
+    
+    public List<CourseSession> getCourseSession(int min, int max)
     {
         List <CourseSession> courseSessionList = null;
         

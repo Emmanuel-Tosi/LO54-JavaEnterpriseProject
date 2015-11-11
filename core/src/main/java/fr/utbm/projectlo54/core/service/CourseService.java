@@ -18,18 +18,23 @@ import java.util.List;
  */
 public class CourseService {
 
-    public CourseService() {
+    public CourseService() 
+    {
+        
     }
+    
     public List<CourseSession> getCourseByCriteria(String keyword, Date date, Location location)
     {
         List <CourseSession> courseSessionList = null;
-        System.out.print("Liste des formations disponibles ");
-        
+        System.out.println("Liste des formations disponibles ");
+        System.out.println("");
+                
         HibernateCourseRepository repository = new HibernateCourseRepository();
         courseSessionList = repository.getByCriteria(keyword,date,location);
         
+       // System.out.println(courseSessionList.size());
         for(int i = 0; i < courseSessionList.size(); i++) {
-            System.out.println(i + " - cours nommé " + courseSessionList.get(i).getTitle());
+            System.out.println(i + " - cours nommé " + courseSessionList.get(i).getCourseCode().getCode());
             System.out.println("");
         }
         

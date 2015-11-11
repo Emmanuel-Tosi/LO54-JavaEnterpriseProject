@@ -10,7 +10,6 @@ package fr.utbm.projectlo54.core.entity;
  * @author java
  */
 public class Course {
-    private int id;
     private String code;
     private String title;
 
@@ -22,20 +21,12 @@ public class Course {
         this.title = title;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public String getCode() {
         return code;
     }
 
     public String getTitle() {
         return title;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setCode(String code) {

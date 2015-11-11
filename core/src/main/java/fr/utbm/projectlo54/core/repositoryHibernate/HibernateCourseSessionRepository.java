@@ -17,7 +17,7 @@ import org.hibernate.Session;
  * @author java
  */
 public class HibernateCourseSessionRepository {
-     public List<CourseSession> getListCourseSession(int min, int max)
+    public List<CourseSession> getListCourseSession(int min, int max)
     {
     	Session session = HibernateUtil.getSessionFactory().openSession();
         List<CourseSession> courseSessionList = null;

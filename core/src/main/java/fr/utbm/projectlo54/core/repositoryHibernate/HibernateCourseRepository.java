@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -30,30 +31,55 @@ public class HibernateCourseRepository {
     {
     	Session session = HibernateUtil.getSessionFactory().openSession();
         List<CourseSession> courseSessionList = null;
-        
-        String queryString = "from Course c";
+        int passage = 0;
+        String queryString = "from CourseSession cs ";
         
         if (keyword != null)
         {
-            queryString = queryString + "where ";
+            queryString = queryString + "where cs.courseCode.title like '%" + keyword + "%'";
         }
         
         if (date != null)
         {
-            queryString = queryString + "where ";
+            if (passage == 0)
+            {
+                queryString = queryString + " where ";
+            }
+            else 
+            {
+                queryString = queryString + " and ";
+            }
+            
+            queryString = queryString + " cs.startDate like '%" + date + "%' ";
+           
         }
         
         if (location != null)
         {
-            queryString = queryString + "where ";
+            if (passage == 0)
+            {
+                queryString = queryString + " where ";
+            }
+            else 
+            {
+                queryString = queryString + " and ";
+            }
+            
+            queryString = queryString + " cs.location.city like '%" + location + "%'";
         }
         
+        System.out.println(queryString);
         
         try {
            session.beginTransaction();
 	   Query query = session.createQuery(queryString);
-           query.setParameter(0, keyword);
+
            courseSessionList = query.list();
+        /*   for(int i = 0; i < courseSessionList.size(); i++) {
+            Hibernate.initialize((courseSessionList.get(i)).getCourseCode());
+            Hibernate.initialize((courseSessionList.get(i)).getLocationId());
+           }*/
+           
            session.getTransaction().commit();
 	} catch (HibernateException he) {
             he.printStackTrace();
