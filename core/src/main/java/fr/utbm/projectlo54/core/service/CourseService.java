@@ -32,7 +32,6 @@ public class CourseService {
         HibernateCourseRepository repository = new HibernateCourseRepository();
         courseSessionList = repository.getByCriteria(keyword,date,cityLocation);
         
-       // System.out.println(courseSessionList.size());
         for(int i = 0; i < courseSessionList.size(); i++) {
             System.out.println(i + " - cours nommé " + courseSessionList.get(i).getCourseCode().getCode() + " Lieu: " + courseSessionList.get(i).getLocationId().getCity() + " Start date: " + courseSessionList.get(i).getStartDate());
             System.out.println("");
