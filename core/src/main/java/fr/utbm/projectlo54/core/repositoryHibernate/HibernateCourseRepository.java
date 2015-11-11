@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Hibernate;
@@ -27,16 +28,19 @@ import org.hibernate.Session;
  * @author java
  */
 public class HibernateCourseRepository {
-    public List<CourseSession> getByCriteria(String keyword, Date date, Location location)
+    public List<CourseSession> getByCriteria(String keyword, Date date, String cityLocation)
     {
     	Session session = HibernateUtil.getSessionFactory().openSession();
         List<CourseSession> courseSessionList = null;
         int passage = 0;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        
         String queryString = "from CourseSession cs ";
         
         if (keyword != null)
         {
             queryString = queryString + "where cs.courseCode.title like '%" + keyword + "%'";
+            passage = 1;
         }
         
         if (date != null)
@@ -50,11 +54,12 @@ public class HibernateCourseRepository {
                 queryString = queryString + " and ";
             }
             
-            queryString = queryString + " cs.startDate like '%" + date + "%' ";
+            queryString = queryString + " cs.startDate = '" + simpleDateFormat.format(date) + "'";
+            passage = 1;
            
         }
         
-        if (location != null)
+        if (cityLocation != null)
         {
             if (passage == 0)
             {
@@ -65,7 +70,7 @@ public class HibernateCourseRepository {
                 queryString = queryString + " and ";
             }
             
-            queryString = queryString + " cs.location.city like '%" + location + "%'";
+            queryString = queryString + " cs.locationId.city = '" + cityLocation + "'";
         }
         
         System.out.println(queryString);
@@ -75,10 +80,11 @@ public class HibernateCourseRepository {
 	   Query query = session.createQuery(queryString);
 
            courseSessionList = query.list();
-        /*   for(int i = 0; i < courseSessionList.size(); i++) {
+           
+           for(int i = 0; i < courseSessionList.size(); i++) {
             Hibernate.initialize((courseSessionList.get(i)).getCourseCode());
             Hibernate.initialize((courseSessionList.get(i)).getLocationId());
-           }*/
+           }
            
            session.getTransaction().commit();
 	} catch (HibernateException he) {

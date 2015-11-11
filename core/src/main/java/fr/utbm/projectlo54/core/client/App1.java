@@ -4,9 +4,11 @@ import fr.utbm.projectlo54.core.entity.CourseSession;
 import fr.utbm.projectlo54.core.entity.Location;
 import fr.utbm.projectlo54.core.service.CourseService;
 import fr.utbm.projectlo54.core.util.HibernateUtil;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import org.hibernate.Session;
 
 /*
@@ -24,16 +26,21 @@ public class App1 {
         
         List <CourseSession> courseSessionList = null;
         CourseService courseService = new CourseService();
-        Date date = new Date();
-        Location loc = new Location();
+        String cityLoc = new String();
         
-        //String dateStr = "2015-03-14T00:00:00.000+01:00";
-        //SimpleDateFormat sdf = new SimpleDateFormat( "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-       // Date date = Date.parse("2015-03-14T00:00:00.000+01:00"); // remove last colon
-        date = null;
-        loc = null;     
-        courseSessionList = courseService.getCourseByCriteria("Programmation",date,loc);
-        //courseSessionList = courseService.getCourseByCriteria("","2015-03-14 00:00:00",loc);
+        Date date = null;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        String date1 = "2015-03-14 00:00:00";
         
+        try {
+          date = simpleDateFormat.parse(date1);
+          System.out.println(date);
+        } catch (ParseException e) {
+          e.printStackTrace();
+        }
+        
+        cityLoc = "Belfort";     
+        courseSessionList = courseService.getCourseByCriteria(null,date,cityLoc);
     }
 }
