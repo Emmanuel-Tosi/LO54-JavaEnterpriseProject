@@ -3,6 +3,7 @@ package fr.utbm.projectlo54.core.client;
 import fr.utbm.projectlo54.core.entity.CourseSession;
 import fr.utbm.projectlo54.core.entity.Location;
 import fr.utbm.projectlo54.core.service.CourseService;
+import fr.utbm.projectlo54.core.service.CourseSessionService;
 import fr.utbm.projectlo54.core.util.HibernateUtil;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,7 +26,7 @@ public class App1 {
     public static void main(String[] args) {
         
         List <CourseSession> courseSessionList = null;
-        CourseService courseService = new CourseService();
+        CourseSessionService courseService = new CourseSessionService();
         String cityLoc = new String();
         
         Date date = null;
