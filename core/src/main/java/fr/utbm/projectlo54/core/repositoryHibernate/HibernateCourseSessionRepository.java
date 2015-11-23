@@ -26,7 +26,7 @@ public class HibernateCourseSessionRepository {
     	Session session = HibernateUtil.getSessionFactory().openSession();
         List<CourseSession> courseSessionList = null;
         int passage = 0;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         
         String queryString = "from CourseSession cs ";
         
@@ -47,7 +47,7 @@ public class HibernateCourseSessionRepository {
                 queryString = queryString + " and ";
             }
             
-            queryString = queryString + " cs.startDate = '" + simpleDateFormat.format(date) + "'";
+            queryString = queryString + " cs.startDate > '" + simpleDateFormat.format(date) + "'";
             passage = 1;
            
         }
