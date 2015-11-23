@@ -108,7 +108,7 @@ public class HibernateCourseSessionRepository {
         
         try {
            session.beginTransaction();
-	   Query query = session.createQuery("from CourseSession cs");
+	   Query query = session.createQuery("from CourseSession cs join fetch cs.locationId join fetch cs.courseCode");
            query.setFirstResult(min);
            query.setMaxResults(max);
            courseSessionList = query.list();

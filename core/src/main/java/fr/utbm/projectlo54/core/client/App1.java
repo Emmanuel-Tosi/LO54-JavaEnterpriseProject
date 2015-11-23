@@ -30,9 +30,9 @@ public class App1 {
         String cityLoc = new String();
         
         Date date = null;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-        String date1 = "2015-03-14 00:00:00";
+        String date1 = "2014-11-15";
         
         try {
           date = simpleDateFormat.parse(date1);
@@ -42,6 +42,10 @@ public class App1 {
         }
         
         cityLoc = "Belfort";     
-        courseSessionList = courseService.getCourseByCriteria(null,date,cityLoc);
+        courseSessionList = courseService.getCourseByCriteria(null,date,null);
+        
+        System.out.println("JE SUIS LA");
+        System.out.println(courseSessionList);
+        
     }
 }

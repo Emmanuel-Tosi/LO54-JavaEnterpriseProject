@@ -11,8 +11,8 @@
 			
                 <property name="startDate" column="START_DATE" not-null="true" />
                 <property name="endDate" column="END_DATE" not-null="true" />
-                <many-to-one name="courseCode" column="COURSE_CODE" not-null="true"/>
-                <many-to-one name="locationId" column="LOCATION_ID" not-null="true"/>
+                <many-to-one name="courseCode" column="COURSE_CODE" not-null="true" fetch="join"/>
+                <many-to-one name="locationId" column="LOCATION_ID" not-null="true" fetch="join"/>
 
 	</class>			
 </hibernate-mapping>
