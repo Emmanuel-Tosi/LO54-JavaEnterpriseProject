@@ -1,22 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.utbm.projectlo54.core.client;
 
 import fr.utbm.projectlo54.core.util.HibernateUtil;
 import org.hibernate.Session;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author java
+ * @author Emmanuel TOSI
  */
 public class App0 {
 
