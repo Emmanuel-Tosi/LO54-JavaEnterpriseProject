@@ -11,8 +11,8 @@ public class App3 {
     public static void main(String[] args) {
         ClientDTO cDTO =  new ClientDTO();
         
-        cDTO.setFirstName("testFirstNameDTO");
-        cDTO.setLastName("testLastNameDTO");
+        cDTO.setFirstName("Nicolas");
+        cDTO.setLastName("Dupond");
         cDTO.setAddress("rue blablab");
         cDTO.setPhone("0123456789");
         cDTO.setEmail("test@test.com");

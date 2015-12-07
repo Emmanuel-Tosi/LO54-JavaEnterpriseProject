@@ -42,7 +42,7 @@ public class HibernateCourseSessionRepository {
                 queryString = queryString + " and ";
             }
             
-            queryString = queryString + " cs.startDate > '" + simpleDateFormat.format(date) + "'";
+            queryString = queryString + " cs.startDate like '%" + simpleDateFormat.format(date) + "%'";
             passage = 1;
            
         }
