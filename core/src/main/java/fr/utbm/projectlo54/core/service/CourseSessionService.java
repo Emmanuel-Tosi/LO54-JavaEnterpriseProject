@@ -32,12 +32,12 @@ public class CourseSessionService {
         return courseSessionList; 
     }
       
-    public List<CourseSession> getCourseSession(int min, int max)
+    public List<CourseSession> getCourseSession()
     {
         List <CourseSession> courseSessionList = null;
         
         HibernateCourseSessionRepository repository = new HibernateCourseSessionRepository();
-        courseSessionList = repository.getListCourseSession(min,max);
+        courseSessionList = repository.getListCourseSession();
         
         return courseSessionList;
     }

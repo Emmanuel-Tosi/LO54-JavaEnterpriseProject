@@ -96,7 +96,7 @@ public class HibernateCourseSessionRepository {
         return courseSessionList;
     } 
     
-    public List<CourseSession> getListCourseSession(int min, int max)
+    public List<CourseSession> getListCourseSession()
     {
     	Session session = HibernateUtil.getSessionFactory().openSession();
         List<CourseSession> courseSessionList = null;
@@ -104,8 +104,6 @@ public class HibernateCourseSessionRepository {
         try {
            session.beginTransaction();
 	   Query query = session.createQuery("from CourseSession cs join fetch cs.locationId join fetch cs.courseCode");
-           query.setFirstResult(min);
-           query.setMaxResults(max);
            courseSessionList = query.list();
            session.getTransaction().commit();
 	} catch (HibernateException he) {
